@@ -1,0 +1,65 @@
+batch ba que 批
+epoch a pei k 时期/轮次
+iteration A te rui xun  迭代
+Sequential  设宽tial   顺序的
+dense 但思  密集的
+unary 一元的 优呢瑞
+binary 拜呢瑞  二元的
+sequence 谁困池  序列
+vector wa ke te 向量
+tensor 张量
+flow 流
+convnet 卷积  康we那特
+recurrent 循环    瑞卡润特
+crossentropy 交叉熵 cross en tro py
+layer 层 累额
+optimizer 优化器
+compile 编译
+activation 激活
+categorical 分类
+sparse 稀疏的 斯怕斯
+convolution 卷积 康we路寻
+flatten 变平 fe la ten
+channel 通道 
+separable 可分离的 杀 pe re bo	
+embedding 嵌入 英ba顶
+constant 常量
+graph 图
+operation 运算/计算
+session 谁寻 会话
+device 第外斯 设备
+variable 可变的/变量 wa瑞额bou [ˈveəriəbl]
+eager 一戈 贪婪的
+edge 边缘 A觉
+estimator 估计量
+extract 提取 啊克斯tra可特
+extractor 提取器
+enumerate 枚举
+coordinate 扣偶的内特 坐标
+log 日志
+encoder 编码
+decoder 解码
+invoke 引用
+concatenate 连接
+record 记录 rua扣的
+info 消息
+wrapper 装饰器
+signature 签名
+assert 断言 额设特
+module 模块
+framework 框架
+algorithm 算法 偶个瑞ze木
+plugin 插件 pe拉gin
+partition 分隔
+tab 标签
+cluster 簇/群
+Inspector 检查工具 in 思 pa 可特
+toggle 切换
+service/server 服务
+resource 资源
+meta 元
+token 令牌
+iterator 迭代器
+console 控制台
+apriori 先验的 a pe rai o rui 
+chart 图标
