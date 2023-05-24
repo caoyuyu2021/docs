@@ -1,0 +1,43 @@
+include:
+  - 'https://git.tongyuan.cc/syslab/ci/julia-ci-templates/raw/main/v2.yml'
+
+# 用于验证提交的 PR 格式是否符合标准
+# MR格式检查:
+#   extends:
+#     - .commit_check
+
+# 执行 Julia 标准单元测试 pkg> test
+单元测试:
+  parallel:
+    matrix:
+      - system: ["ubuntu"]
+  extends:
+    - .julia
+    - .test
+
+# # 执行 test_legacy/main.jl，如果没有遗留的示例代码测试的话，则不需要该阶段
+# 示例代码测试(遗留):
+#   parallel:
+#     matrix:
+#       - system: ["ubuntu:20.04"]
+#   extends:
+#     - .julia
+#     - .test_legacy
+
+# # 如果不存在基于 Documenter 的文档， 则不需要该阶段
+# 文档构建:
+#   extends:
+#     - .documentation
+
+# 检查当前代码库是否可以发布新版本
+版本检查:
+  needs: []
+  extends:
+    - .check_release
+
+# 仅在存在新版本时允许手动将包注册到 Syslab 注册表
+注册:
+  dependencies: ["版本检查"]
+  needs: ["版本检查"]
+  extends:
+    - .register

@@ -1,0 +1,1 @@
+  -LC:/Users/Administrator/Desktop/ROMBuilder/Windows/CPU/Minfer/build/lib  -Wl,--whole-archive -lmindspore-lite -Wl,--no-whole-archive -lpthread -lssp -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

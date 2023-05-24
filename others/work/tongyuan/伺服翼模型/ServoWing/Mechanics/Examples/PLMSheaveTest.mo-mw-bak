@@ -1,0 +1,74 @@
+﻿within ServoWing.Mechanics.Examples;
+model PLMSheaveTest "滑轮与绳测试模型"
+  extends ServoWing.Icons.Test;
+  annotation (Diagram(coordinateSystem(extent = {{-100.0, -100.0}, {100.0, 100.0}}, 
+    preserveAspectRatio = false, 
+    grid = {2.0, 2.0})), 
+    Icon(coordinateSystem(extent = {{-100.0, -100.0}, {100.0, 100.0}}, 
+      preserveAspectRatio = false, 
+      grid = {2.0, 2.0})));
+  PLMSheave pLMSheave1_1 annotation (Placement(transformation(extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+
+  Components.PLMFixed fixed annotation (Placement(transformation(origin = {-50.0, 0.0}, 
+    extent = {{-10.0, -10.0}, {10.0, 10.0}}, 
+    rotation = 180.0)));
+
+  Modelica.Mechanics.Rotational.Sources.Speed speed annotation (Placement(transformation(origin = {-30.0, 30.0}, 
+    extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+
+  Modelica.Blocks.Sources.Constant const
+    annotation (Placement(transformation(origin = {-70.0, 30.0}, 
+      extent = {{10.0, -10.0}, {-10.0, 10.0}}, 
+      rotation = 180.0)));
+  PLMRope pLMRope_E2_1 annotation (Placement(transformation(origin = {-6.0, -28.0}, 
+    extent = {{-10.0, 10.0}, {10.0, -10.0}}, 
+    rotation = -90.0)));
+
+  PLMRope pLMRope_E2_2 annotation (Placement(transformation(origin = {6.0, -28.0}, 
+    extent = {{-10.0, 10.0}, {10.0, -10.0}}, 
+    rotation = -90.0)));
+  Components.PLMBody pLMBody
+    annotation (Placement(transformation(origin = {-6.0, -60.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}}, 
+      rotation = -90.0)));
+  Components.PLMBody pLMBody1
+    annotation (Placement(transformation(origin = {6.0, -60.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}}, 
+      rotation = -90.0)));
+  inner Components.PlanarWorld planarWorld
+    annotation (Placement(transformation(origin = {-80.0, 60.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+equation 
+  connect(fixed.frame, pLMSheave1_1.pull)
+    annotation (Line(origin = {-25.0, 0.0}, 
+      points = {{-15.0, 0.0}, {15.0, 0.0}}, 
+      color = {95, 95, 95}, 
+      thickness = 0.5));
+  connect(speed.flange, pLMSheave1_1.drive)
+    annotation (Line(origin = {-10.0, 20.0}, 
+      points = {{-10.0, 10.0}, {10.0, 10.0}, {10.0, -11.0}}));
+  connect(const.y, speed.w_ref)
+    annotation (Line(origin = {-50.0, 30.0}, 
+      points = {{-9.0, 0.0}, {8.0, 0.0}}, 
+      color = {0, 0, 127}));
+  connect(pLMRope_E2_1.rope1, pLMSheave1_1.rope1)
+    annotation (Line(origin = {-6.0, -14.0}, 
+      points = {{0.0, -4.0}, {0.0, 3.0}}, 
+      color = {95, 95, 95}, 
+      thickness = 0.5));
+  connect(pLMRope_E2_2.rope1, pLMSheave1_1.rope2)
+    annotation (Line(origin = {6.0, -14.0}, 
+      points = {{0.0, -4.0}, {0.0, 3.0}}, 
+      color = {95, 95, 95}, 
+      thickness = 0.5));
+  connect(pLMBody.frame_a, pLMRope_E2_1.rope2)
+    annotation (Line(origin = {-6.0, -44.0}, 
+      points = {{0.0, -6.0}, {0.0, 6.0}}, 
+      color = {95, 95, 95}, 
+      thickness = 0.5));
+  connect(pLMBody1.frame_a, pLMRope_E2_2.rope2)
+    annotation (Line(origin = {7.0, -44.0}, 
+      points = {{-1.0, -6.0}, {-1.0, 6.0}}, 
+      color = {95, 95, 95}, 
+      thickness = 0.5));
+end PLMSheaveTest;

@@ -1,0 +1,27 @@
+name = "TyGlobalOptimization"
+uuid = "cec58fa2-a947-4a43-9bac-97aa2ccd8d94"
+authors = ["Zhanlei Peng"]
+version = "0.2.2"
+
+[deps]
+Metaheuristics = "bcdb8e00-2c21-11e9-3065-2b553b22f898"
+MultistartOptimization = "3933049c-43be-478e-a8bb-6e0f7fd53575"
+NLopt = "76087f3c-5699-56af-9a33-bf431cd00edd"
+PyCall = "438e738f-606a-5dbb-bf0a-cddfbfd45ab0"
+Surrogates = "6fc51010-71bc-11e9-0e15-a3fcc6593c49"
+TyAPI = "47291b8a-bbb9-4491-9db9-c1b01f408cdb"
+TyBase = "ba16d4c4-18a5-4e01-8d4b-5500359c5e02"
+TyMath = "f3e03b70-54fa-45d2-b127-9119d2067c27"
+TyPlot = "7eeb5a84-4ac5-4142-811f-ccc15cc08785"
+
+[compat]
+Metaheuristics = "=3.2.14"
+MultistartOptimization = "0.2.2"
+NLopt = "0.6.5"
+PyCall = "1.94"
+Surrogates = "6.4"
+TyAPI = "0.3"
+TyBase = "0.7"
+TyMath = "0.7"
+TyPlot = "=0.7.9"
+julia = "1"

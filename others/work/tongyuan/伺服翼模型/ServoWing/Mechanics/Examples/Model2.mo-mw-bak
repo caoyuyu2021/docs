@@ -1,0 +1,122 @@
+﻿within ServoWing.Mechanics.Examples;
+model Model2
+  rope.winchT1D_S winchT1D1
+    annotation (Placement(transformation(origin = {52.99999999999999, 1.000000000000003}, 
+      extent = {{-15.0, -15.0}, {15.0, 15.0}}, 
+      rotation = -90.0)));
+  rope.winchT1D_S winchT1D2
+    annotation (Placement(transformation(origin = {-52.0, 0.0}, 
+      extent = {{-16.0, 16.0}, {16.0, -16.0}}, 
+      rotation = -90.0)));
+  rope.ropeT1D ropeT1D1
+    annotation (Placement(transformation(origin = {0.0, 6.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+
+
+
+  Modelica.Mechanics.Translational.Components.Fixed fixed1
+    annotation (Placement(transformation(origin = {92.0, -30.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  rope.winchT1D_S winchT1D3
+    annotation (Placement(transformation(origin = {-54.0, -66.0}, 
+      extent = {{-16.0, 16.0}, {16.0, -16.0}}, 
+      rotation = -90.0)));
+  annotation (Diagram(coordinateSystem(extent = {{-140.0, -160.0}, {120.0, 100.0}}, 
+    grid = {2.0, 2.0})));
+  rope.winchT1D_S winchT1D4
+    annotation (Placement(transformation(origin = {53.0, -64.99999999999999}, 
+      extent = {{-15.0, -15.0}, {15.0, 15.0}}, 
+      rotation = -90.0)));
+  rope.ropeT1D ropeT1D2
+    annotation (Placement(transformation(origin = {0.0, -60.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  Modelica.Mechanics.Translational.Components.Fixed fixed2
+    annotation (Placement(transformation(origin = {92.0, -96.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+
+
+
+  Modelica.Mechanics.Rotational.Components.Inertia inertia
+    annotation (Placement(transformation(origin = {-140.0, 40.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  Modelica.Mechanics.Translational.Sources.Position position
+    annotation (Placement(transformation(origin = {-140.0, -30.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  Modelica.Blocks.Sources.Ramp ramp1(height = -0.4, duration = 5)
+    annotation (Placement(transformation(origin = {-190.0, -30.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  Modelica.Mechanics.Rotational.Sources.Position position1
+    annotation (Placement(transformation(origin = {20.0, 50.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  Modelica.Blocks.Sources.Constant const(k = 0)
+    annotation (Placement(transformation(origin = {-20.0, 50.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  Modelica.Mechanics.Rotational.Sources.Position position2
+    annotation (Placement(transformation(origin = {22.0, -32.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  Modelica.Blocks.Sources.Constant const1(k = 0)
+    annotation (Placement(transformation(origin = {-18.0, -32.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+equation 
+  connect(winchT1D2.rope, ropeT1D1.rope1)
+    annotation (Line(origin = {-27.0, 6.0}, 
+      points = {{-7.0, 0.0}, {16.0, 0.0}}, 
+      color = {0, 127, 0}));
+  connect(ropeT1D1.rope2, winchT1D1.rope)
+    annotation (Line(origin = {34.0, 6.0}, 
+      points = {{-23.0, 0.0}, {2.0, 0.0}, {2.0, 1.0}}, 
+      color = {0, 127, 0}));
+  connect(winchT1D1.pull, fixed1.flange)
+    annotation (Line(origin = {80.0, -14.0}, 
+      points = {{-13.0, 15.0}, {12.0, 15.0}, {12.0, -16.0}}, 
+      color = {0, 127, 0}));
+  connect(winchT1D3.rope, ropeT1D2.rope1)
+    annotation (Line(origin = {-23.0, -60.0}, 
+      points = {{-13.0, 0.0}, {12.0, 0.0}}, 
+      color = {0, 127, 0}));
+  connect(ropeT1D2.rope2, winchT1D4.rope)
+    annotation (Line(origin = {24.0, -59.0}, 
+      points = {{-13.0, -1.0}, {13.0, -1.0}, {13.0, 0.0}}, 
+      color = {0, 127, 0}));
+  connect(winchT1D4.pull, fixed2.flange)
+    annotation (Line(origin = {80.0, -80.0}, 
+      points = {{-13.0, 15.0}, {12.0, 15.0}, {12.0, -16.0}}, 
+      color = {0, 127, 0}));
+
+  connect(inertia.flange_b, winchT1D2.drive)
+    annotation (Line(origin = {-91.0, 28.0}, 
+      points = {{-39.0, 12.0}, {39.0, 12.0}, {39.0, -12.0}}, 
+      color = {0, 0, 0}));
+  connect(inertia.flange_b, winchT1D3.drive)
+    annotation (Line(origin = {-92.0, -5.0}, 
+      points = {{-38.0, 45.0}, {16.0, 45.0}, {16.0, -35.0}, {38.0, -35.0}, {38.0, -45.0}}, 
+      color = {0, 0, 0}));
+  connect(position.flange, winchT1D2.pull)
+    annotation (Line(origin = {-98.0, -15.0}, 
+      points = {{-32.0, -15.0}, {-6.0, -15.0}, {-6.0, 15.0}, {32.0, 15.0}}, 
+      color = {0, 127, 0}));
+  connect(position.flange, winchT1D3.pull)
+    annotation (Line(origin = {-99.0, -48.0}, 
+      points = {{-31.0, 18.0}, {-5.0, 18.0}, {-5.0, -18.0}, {31.0, -18.0}}, 
+      color = {0, 127, 0}));
+  connect(ramp1.y, position.s_ref)
+    annotation (Line(origin = {-162.0, -30.0}, 
+      points = {{-17.0, 0.0}, {10.0, 0.0}}, 
+      color = {0, 0, 127}));
+  connect(position1.flange, winchT1D1.drive)
+    annotation (Line(origin = {42.0, 33.0}, 
+      points = {{-12.0, 17.0}, {11.0, 17.0}, {11.0, -17.0}}, 
+      color = {0, 0, 0}));
+  connect(const.y, position1.phi_ref)
+    annotation (Line(origin = {0.0, 50.0}, 
+      points = {{-9.0, 0.0}, {8.0, 0.0}}, 
+      color = {0, 0, 127}));
+  connect(const1.y, position2.phi_ref)
+    annotation (Line(origin = {2.0, -32.0}, 
+      points = {{-9.0, 0.0}, {8.0, 0.0}}, 
+      color = {0, 0, 127}));
+  connect(position2.flange, winchT1D4.drive)
+    annotation (Line(origin = {43.0, -41.0}, 
+      points = {{-11.0, 9.0}, {10.0, 9.0}, {10.0, -9.0}}, 
+      color = {0, 0, 0}));
+end Model2;

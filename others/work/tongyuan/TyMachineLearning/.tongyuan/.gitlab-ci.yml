@@ -1,0 +1,35 @@
+include:
+  - 'https://git.tongyuan.cc/syslab/ci/julia-ci-templates/raw/main/v3.yml'
+
+# 用于验证提交的 PR 格式是否符合标准
+MR格式检查:
+  variables:
+    TY_CI_ENABLE_FORMAT_CHECK: "false"
+  extends:
+    - .commit_check
+
+# 执行 Julia 标准单元测试 pkg> test
+# 进阶配置参考阅读: https://git.tongyuan.cc/syslab/ci/julia-ci-templates#Linux单元测试
+单元测试(Ubuntu):
+  parallel:
+    matrix:
+      - julia_version: ["1.7", "1.8"]
+        python_version: ["3.7", "3.9"]
+  extends:
+    - .ubuntu_x86_64
+    - .setup_julia
+    - .test_linux
+
+
+# 检查当前代码库是否可以发布新版本
+版本检查:
+  needs: []
+  extends:
+    - .check_release
+
+# 仅在存在新版本时允许手动将包注册到 Syslab 注册表
+注册:
+  dependencies: ["版本检查"]
+  needs: ["版本检查"]
+  extends:
+    - .register

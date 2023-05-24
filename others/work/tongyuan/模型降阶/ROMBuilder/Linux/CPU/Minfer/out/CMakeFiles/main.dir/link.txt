@@ -1,0 +1,1 @@
+/usr/local/bin/c++ CMakeFiles/main.dir/main.cc.o -o main   -L/home/tongyuan/桌面/Linux/CPU/Minfer/build/lib  -Wl,-rpath,/home/tongyuan/桌面/Linux/CPU/Minfer/build/lib -Wl,--whole-archive -lmindspore-lite -Wl,--no-whole-archive -lpthread -ldl 

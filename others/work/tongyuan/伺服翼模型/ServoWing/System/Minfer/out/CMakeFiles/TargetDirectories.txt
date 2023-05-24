@@ -1,0 +1,3 @@
+/home/tongyuan/文档/MWORKS/Minfer/out/CMakeFiles/rebuild_cache.dir
+/home/tongyuan/文档/MWORKS/Minfer/out/CMakeFiles/edit_cache.dir
+/home/tongyuan/文档/MWORKS/Minfer/out/CMakeFiles/main.dir

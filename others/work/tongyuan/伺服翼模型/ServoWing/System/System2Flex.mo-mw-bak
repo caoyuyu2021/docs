@@ -1,0 +1,231 @@
+﻿within ServoWing.System;
+model System2Flex "伺服翼系统"
+  extends Modelica.Icons.Example;
+  inner Modelica.Mechanics.MultiBody.World world(gravityType = Modelica.Mechanics.MultiBody.Types.GravityTypes.NoGravity)
+    annotation (Placement(transformation(origin = {-18.0, -26.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  ServoWing.Structure.TelescopicWingFlex telescopicWingFlex(modalBody_TR(deformscale = 2))
+    annotation (Placement(transformation(origin = {126.0, -26.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  annotation (experiment(Algorithm = Rkfix4, Interval = 0.0001, StartTime = 0, StopTime = 10, Tolerance = 0.0001, IntegratorStep = 0.0001), 
+    Diagram(coordinateSystem(extent = {{-560.0, -140.0}, {220.0, 160.0}}, 
+      grid = {2.0, 2.0})));
+  ServoWing.Structure.FoldingWingsFlex foldingWingsFlex(modalBody_TR(deformscale = 2))
+    annotation (Placement(transformation(origin = {192.0, -26.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  Modelica.Mechanics.MultiBody.Joints.Revolute revolute(useAxisFlange = true, 
+    n = {0, -1, 0}) annotation (Placement(transformation(origin = {160.0, -26.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  Modelica.Mechanics.Rotational.Sources.Position position
+    annotation (Placement(transformation(origin = {90.0, 46.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  Modelica.Blocks.Sources.TimeTable timeTable1(table = {{0, 0}, {5, 0}, {10, 6.28}, {20, 6.28}})
+    annotation (Placement(transformation(origin = {40.0, 46.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  ServoWing.Structure.MainBodyFlex mainBodyFlex(modalBody_TR(deformscale = 2))
+    annotation (Placement(transformation(origin = {54.0, -26.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  Modelica.Mechanics.MultiBody.Joints.Prismatic prismatic(useAxisFlange = true)
+    annotation (Placement(transformation(origin = {86.0, -26.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  Mechanics.FoldingGear foldingRope annotation (Placement(transformation(origin = {136.0, 46.0}, 
+    extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  Subsystems.ThermalSystem thermalSystem
+    annotation (Placement(transformation(origin = {-302.0, 88.0}, 
+      extent = {{10.0, -10.0}, {-10.0, 10.0}})));
+  Subsystems.ElectricalSystem electricalSystem(U_dc = 220)
+    annotation (Placement(transformation(origin = {-372.0, 60.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  Subsystems.PMSM pMSM(J_Rotor = 45e-6, p = 2, Rs = 0.06, Lssigma = 4e-5, Lmd = 0.16e-3, Lmq = 0.16e-3, 
+    terminalConnection = "Y", torque_max = 1.2, Va = 220) annotation (Placement(transformation(origin = {-334.0, 60.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  Subsystems.MeasureSystem measureSystem
+    annotation (Placement(transformation(origin = {-180.0, 34.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  Controller.PMSMControllerX controlSystem(Kp3 = 2142 * 180 / pi, 
+    p = 2, 
+    U_dc = 220, T_PWM = 1e-4, Kp1 = 2.607, Ki1 = 0, T1 = 1e-5, Kp2 = 0.456, Ki2 = 0.01, T2 = 1e-4, u_max3 = 18000 * 2 * pi / 60, u_max2 = 120, 
+    T3 = 0.001, 
+    u_max1 = 220, 
+    u_max4 = 8.5 / 180 * pi)
+
+    annotation (Placement(transformation(origin = {-410.0, 56.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  Modelica.Blocks.Sources.BooleanConstant booleanConstant(k = true)
+    annotation (Placement(transformation(origin = {-454.0, 46.0}, 
+      extent = {{-5.0, -5.0}, {5.0, 5.0}})));
+  Modelica.Blocks.Sources.Constant const2(k = 0)
+    annotation (Placement(transformation(origin = {-491.0, 69.0}, 
+      extent = {{-5.0, -5.0}, {5.0, 5.0}})));
+  Modelica.Blocks.Sources.Step step(height = 4 / 57.3, startTime = 0.1)
+    annotation (Placement(transformation(origin = {-535.0, 95.0}, 
+      extent = {{-5.0, -5.0}, {5.0, 5.0}})));
+  Loads.JetNozzleX jetNozzle2_1
+
+    annotation (Placement(transformation(origin = {-108.00000000000006, 49.99999999999999}, 
+      extent = {{-22.0, -22.0}, {22.0, 22.0}})));
+  Modelica.Mechanics.Translational.Sources.Position position2(
+    useSupport = true) annotation (Placement(transformation(origin = {-186.0, -10.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  Modelica.Mechanics.Translational.Components.Fixed fixed1(s0 = 407.5 / 1000)
+    annotation (Placement(transformation(origin = {-186.0, -38.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  Modelica.Blocks.Sources.Constant const3(k = 0)
+    annotation (Placement(transformation(origin = {-229.99999999999994, -9.999999999999986}, 
+      extent = {{-6.0, -6.0}, {6.0, 6.0}})));
+  Subsystems.MechanicsSystem2 mechanicsSystem2_1(Ph = 4, eta = 0.7, 
+    s0_start = 407.5 / 1000, 
+    zA1 = 17, zB1 = 57, 
+    zA2 = 1, zB2 = 1)
+
+
+    annotation (Placement(transformation(origin = {-259.0, 61.000000000000014}, 
+      extent = {{-11.0, -11.0}, {11.0, 11.0}})));
+  Loads.Components.SpringDamper springDamper(stateSelect = StateSelect.avoid) annotation (Placement(transformation(origin = {-179.00000000000006, 61.0}, 
+    extent = {{-11.0, -11.0}, {11.0, 11.0}})));
+  Controller.Components.Cal_fai_L cal_fai_L(w = 10)
+    annotation (Placement(transformation(origin = {-400.0, -10.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  Controller.Components.SineSignal sineSignal(w = 10)
+    annotation (Placement(transformation(origin = {-512.0, 54.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  Mechanics.BallScrews ballScrews_E(s0_start = 0, Ph = 6)
+    annotation (Placement(transformation(origin = {-2.0, 14.0}, 
+      extent = {{-12.0, -12.0}, {12.0, 12.0}})));
+equation 
+  connect(telescopicWingFlex.frame_b, revolute.frame_a)
+    annotation (Line(origin = {143.0, -26.0}, 
+      points = {{-7.0, 0.0}, {7.0, 0.0}}, 
+      color = {95, 95, 95}, 
+      thickness = 0.5));
+  connect(revolute.frame_b, foldingWingsFlex.frame_a)
+    annotation (Line(origin = {175.0, -25.0}, 
+      points = {{-5.0, -1.0}, {7.0, -1.0}}, 
+      color = {95, 95, 95}, 
+      thickness = 0.5));
+  connect(timeTable1.y, position.phi_ref)
+    annotation (Line(origin = {56.0, 19.0}, 
+      points = {{-5.0, 27.0}, {22.0, 27.0}}, 
+      color = {0, 0, 127}));
+  connect(world.frame_b, mainBodyFlex.frame_a)
+    annotation (Line(origin = {17.0, -25.0}, 
+      points = {{-25.0, -1.0}, {27.0, -1.0}}, 
+      color = {95, 95, 95}, 
+      thickness = 0.5));
+  connect(mainBodyFlex.frame_b, prismatic.frame_a)
+    annotation (Line(origin = {70.0, -26.0}, 
+      points = {{-6.0, 0.0}, {6.0, 0.0}}, 
+      color = {95, 95, 95}, 
+      thickness = 0.5));
+  connect(prismatic.frame_b, telescopicWingFlex.frame_a)
+    annotation (Line(origin = {106.0, -26.0}, 
+      points = {{-10.0, 0.0}, {10.0, 0.0}}, 
+      color = {95, 95, 95}, 
+      thickness = 0.5));
+  connect(position.flange, foldingRope.drive)
+    annotation (Line(origin = {113.0, 33.0}, 
+      points = {{-13.0, 13.0}, {13.0, 13.0}}, 
+      color = {0, 0, 0}));
+  connect(foldingRope.drive1, revolute.axis)
+    annotation (Line(origin = {152.0, 10.0}, 
+      points = {{-6.0, 42.0}, {8.0, 42.0}, {8.0, -26.0}}, 
+      color = {0, 0, 0}));
+  connect(thermalSystem.port, pMSM.port)
+    annotation (Line(origin = {-341.0, 100.0}, 
+      points = {{29.0, -12.0}, {7.0, -12.0}, {7.0, -30.0}}, 
+      color = {191, 0, 0}));
+  connect(electricalSystem.plug_n, measureSystem.plug_p)
+    annotation (Line(origin = {-316.0, 69.0}, 
+      points = {{-46.0, -13.0}, {-42.0, -13.0}, {-42.0, -41.0}, {126.0, -41.0}}, 
+      color = {0, 0, 255}));
+  connect(measureSystem.plug_n, pMSM.plug_n)
+    annotation (Line(origin = {-338.0, 43.0}, 
+      points = {{148.0, -11.0}, {-10.0, -11.0}, {-10.0, 13.0}, {-6.0, 13.0}}, 
+      color = {0, 0, 255}));
+  connect(electricalSystem.pin_ap, pMSM.pin_ap)
+    annotation (Line(origin = {-364.0, 64.0}, 
+      points = {{2.0, 0.0}, {20.0, 0.0}}, 
+      color = {0, 0, 255}));
+  connect(electricalSystem.pin_an, pMSM.pin_an)
+    annotation (Line(origin = {-364.0, 60.0}, 
+      points = {{2.0, 0.0}, {20.0, 0.0}}, 
+      color = {0, 0, 255}));
+  connect(measureSystem.i, controlSystem.i_f)
+    annotation (Line(origin = {-328.0, 87.0}, 
+      points = {{159.0, -55.0}, {164.0, -55.0}, {164.0, -71.0}, {-100.0, -71.0}, {-100.0, -36.0}, {-93.0, -36.0}}, 
+      color = {0, 0, 127}));
+  connect(controlSystem.pulse, electricalSystem.pulse)
+    annotation (Line(origin = {-391.0, 60.0}, 
+      points = {{-8.0, 0.0}, {8.0, 0.0}}, 
+      color = {255, 0, 255}));
+  connect(booleanConstant.y, controlSystem.signal)
+    annotation (Line(origin = {-440.0, 49.0}, 
+      points = {{-9.0, -3.0}, {19.0, -3.0}, {19.0, -2.0}}, 
+      color = {255, 0, 255}));
+  connect(measureSystem.w, controlSystem.w)
+    annotation (Line(origin = {-285.0, 43.0}, 
+      points = {{116.0, -15.0}, {119.0, -15.0}, {119.0, -23.0}, {-151.0, -23.0}, {-151.0, 23.0}, {-136.0, 23.0}}, 
+      color = {0, 0, 127}));
+  connect(pMSM.flange_a, measureSystem.flange_a)
+    annotation (Line(origin = {-287.0, 49.0}, 
+      points = {{-37.0, 11.0}, {-21.0, 11.0}, {-21.0, -13.0}, {97.0, -13.0}}));
+  connect(const2.y, controlSystem.w_ref)
+    annotation (Line(origin = {-453.0, 64.0}, 
+      points = {{-33.0, 5.0}, {-21.0, 5.0}, {-21.0, -6.0}, {32.0, -6.0}}, 
+      color = {0, 0, 127}));
+  connect(measureSystem.phi, controlSystem.phi)
+    annotation (Line(origin = {-296.0, 38.0}, 
+      points = {{127.0, -2.0}, {136.0, -2.0}, {136.0, -26.0}, {-136.0, -26.0}, {-136.0, 25.0}, {-125.0, 25.0}}, 
+      color = {0, 0, 127}));
+  connect(jetNozzle2_1.angle_Y_rad, controlSystem.phi_pg)
+    annotation (Line(origin = {-224.0, 98.0}, 
+      points = {{140.0, -44.0}, {156.0, -44.0}, {156.0, 28.0}, {-212.0, 28.0}, {-212.0, -29.0}, {-197.0, -29.0}}, 
+      color = {0, 0, 127}));
+  connect(position2.support, fixed1.flange)
+    annotation (Line(origin = {-184.0, -30.0}, 
+      points = {{-2.0, 10.0}, {-2.0, -8.0}}, 
+      color = {0, 127, 0}));
+  connect(const3.y, position2.s_ref)
+    annotation (Line(origin = {-217.0, -9.0}, 
+      points = {{-6.0, -1.0}, {19.0, -1.0}}, 
+      color = {0, 0, 127}));
+  connect(pMSM.flange_a, mechanicsSystem2_1.flange_a)
+    annotation (Line(origin = {-293.0, 61.0}, 
+      points = {{-31.0, -1.0}, {23.0, -1.0}, {23.0, 0.0}}));
+  connect(mechanicsSystem2_1.flange_t, measureSystem.flange_a1)
+    annotation (Line(origin = {-213.0, 51.0}, 
+      points = {{-35.0, 10.0}, {-23.0, 10.0}, {-23.0, -11.0}, {23.0, -11.0}}, 
+      color = {0, 127, 0}));
+  connect(mechanicsSystem2_1.flange_t, springDamper.flange_a)
+    annotation (Line(origin = {-195.0, 77.0}, 
+      points = {{-53.0, -16.0}, {5.0, -16.0}}, 
+      color = {0, 127, 0}));
+  connect(springDamper.flange_b, jetNozzle2_1.flange_y)
+    annotation (Line(origin = {-90.0, 93.0}, 
+      points = {{-78.0, -32.0}, {-38.0, -32.0}, {-38.0, -34.0}, {-40.0, -34.0}}, 
+      color = {0, 127, 0}));
+  connect(position2.flange, jetNozzle2_1.flange_z)
+    annotation (Line(origin = {-201.0, -24.0}, 
+      points = {{25.0, 14.0}, {51.0, 14.0}, {51.0, 66.0}, {71.0, 66.0}}, 
+      color = {0, 127, 0}));
+  connect(controlSystem.phi_pg, cal_fai_L.signal)
+    annotation (Line(origin = {-426.0, 29.0}, 
+      points = {{5.0, 40.0}, {-16.0, 40.0}, {-16.0, -41.0}, {15.0, -41.0}}, 
+      color = {0, 0, 127}));
+  connect(sineSignal.y, controlSystem.phi_ref)
+    annotation (Line(origin = {-460.0, 48.0}, 
+      points = {{-41.0, 6.0}, {-24.0, 6.0}, {-24.0, 7.0}, {39.0, 7.0}}, 
+      color = {0, 0, 127}));
+  connect(cal_fai_L.signal_ref, controlSystem.phi_ref)
+    annotation (Line(origin = {-447.0, 25.0}, 
+      points = {{36.0, -31.0}, {-37.0, -31.0}, {-37.0, 30.0}, {26.0, 30.0}}, 
+      color = {0, 0, 127}));
+  connect(pMSM.flange_a, ballScrews_E.flange_r)
+    annotation (Line(origin = {-164.0, 50.0}, 
+      points = {{-160.0, 10.0}, {-118.0, 10.0}, {-118.0, 34.0}, {132.0, 34.0}, {132.0, -36.0}, {150.0, -36.0}}, 
+      color = {0, 0, 0}));
+  connect(ballScrews_E.flange_t, prismatic.axis)
+    annotation (Line(origin = {46.0, 7.0}, 
+      points = {{-48.0, 13.0}, {-48.0, 27.0}, {-20.0, 27.0}, {-20.0, -1.0}, {48.0, -1.0}, {48.0, -27.0}}, 
+      color = {0, 127, 0}));
+end System2Flex;

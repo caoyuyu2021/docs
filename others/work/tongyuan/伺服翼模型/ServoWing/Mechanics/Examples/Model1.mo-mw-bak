@@ -1,0 +1,62 @@
+﻿within ServoWing.Mechanics.Examples;
+model Model1
+  rope.ropeT1D ropeT1D1(L0 = 0.4)
+    annotation (Placement(transformation(origin = {-6.0, 22.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  rope.ropeT1D ropeT1D2(L0 = 0.4)
+    annotation (Placement(transformation(origin = {-6.0, -2.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  rope.sheaveT1D sheaveT1D1
+    annotation (Placement(transformation(origin = {56.0, 10.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}}, 
+      rotation = 270.0)));
+  rope.sheaveT1D sheaveT1D2
+    annotation (Placement(transformation(origin = {-64.0, 12.0}, 
+      extent = {{-10.0, 10.0}, {10.0, -10.0}}, 
+      rotation = -90.0)));
+  Modelica.Mechanics.Translational.Components.Fixed fixed
+    annotation (Placement(transformation(origin = {-90.0, -4.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  Modelica.Mechanics.Translational.Components.Fixed fixed1
+    annotation (Placement(transformation(origin = {88.0, -8.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  Modelica.Mechanics.Rotational.Sources.Position position
+    annotation (Placement(transformation(origin = {-88.0, 52.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  Modelica.Blocks.Sources.TimeTable timeTable(table = {{0.0, 0.0}, {1, 0.1}})
+    annotation (Placement(transformation(origin = {-138.0, 52.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+equation 
+  connect(sheaveT1D2.pull, fixed.flange)
+    annotation (Line(origin = {-82.0, 4.0}, 
+      points = {{8.0, 8.0}, {-8.0, 8.0}, {-8.0, -8.0}}, 
+      color = {0, 127, 0}));
+  connect(sheaveT1D1.pull, fixed1.flange)
+    annotation (Line(origin = {78.0, 1.0}, 
+      points = {{-12.0, 9.0}, {10.0, 9.0}, {10.0, -9.0}}, 
+      color = {0, 127, 0}));
+  connect(sheaveT1D2.rope1, ropeT1D1.rope1)
+    annotation (Line(origin = {-35.0, 20.0}, 
+      points = {{-19.0, -2.0}, {-7.0, -2.0}, {-7.0, 2.0}, {18.0, 2.0}}, 
+      color = {0, 127, 0}));
+  connect(sheaveT1D2.rope2, ropeT1D2.rope1)
+    annotation (Line(origin = {-35.0, 3.0}, 
+      points = {{-19.0, 4.0}, {-7.0, 4.0}, {-7.0, -5.0}, {18.0, -5.0}}, 
+      color = {0, 127, 0}));
+  connect(ropeT1D1.rope2, sheaveT1D1.rope1)
+    annotation (Line(origin = {26.0, 19.0}, 
+      points = {{-21.0, 3.0}, {0.0, 3.0}, {0.0, -3.0}, {20.0, -3.0}}, 
+      color = {0, 127, 0}));
+  connect(ropeT1D2.rope2, sheaveT1D1.rope2)
+    annotation (Line(origin = {26.0, 2.0}, 
+      points = {{-21.0, -4.0}, {0.0, -4.0}, {0.0, 3.0}, {20.0, 3.0}}, 
+      color = {0, 127, 0}));
+  connect(timeTable.y, position.phi_ref)
+    annotation (Line(origin = {-113.0, 52.0}, 
+      points = {{-14.0, 0.0}, {13.0, 0.0}}, 
+      color = {0, 0, 127}));
+  connect(position.flange, sheaveT1D2.drive)
+    annotation (Line(origin = {-71.0, 37.0}, 
+      points = {{-7.0, 15.0}, {7.0, 15.0}, {7.0, -15.0}}, 
+      color = {0, 0, 0}));
+end Model1;

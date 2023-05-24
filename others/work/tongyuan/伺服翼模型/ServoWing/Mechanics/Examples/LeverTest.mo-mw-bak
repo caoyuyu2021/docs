@@ -1,0 +1,28 @@
+﻿within ServoWing.Mechanics.Examples;
+model LeverTest "杠杆测试"
+  extends ServoWing.Icons.Test;
+  leverT1D lever1(La = 3) annotation (Placement(transformation(origin = {-2.0, 16.0}, 
+    extent = {{-40.0, -40.0}, {40.0, 40.0}})));
+
+  Modelica.Mechanics.Translational.Sources.Force constantForce
+    annotation (Placement(transformation(origin = {-68.0, 16.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  Modelica.Mechanics.Translational.Components.Fixed fixed annotation (Placement(transformation(origin = {38.0, -10.0}, 
+    extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+  Modelica.Blocks.Sources.RealExpression realExpression(y = 1)
+    annotation (Placement(transformation(origin = {-106.0, 16.0}, 
+      extent = {{-10.0, -10.0}, {10.0, 10.0}})));
+equation 
+  connect(constantForce.flange, lever1.flange_a)
+    annotation (Line(origin = {-51.0, -7.0}, 
+      points = {{-7.0, 23.0}, {9.0, 23.0}}, 
+      color = {0, 127, 0}));
+  connect(lever1.flange_b, fixed.flange)
+    annotation (Line(origin = {39.0, 3.0}, 
+      points = {{-1.0, 13.0}, {-1.0, -13.0}}, 
+      color = {0, 127, 0}));
+  connect(realExpression.y, constantForce.f)
+    annotation (Line(origin = {-87.0, 16.0}, 
+      points = {{-8.0, 0.0}, {7.0, 0.0}}, 
+      color = {0, 0, 127}));
+end LeverTest;

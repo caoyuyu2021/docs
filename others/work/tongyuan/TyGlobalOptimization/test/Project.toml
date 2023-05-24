@@ -1,0 +1,9 @@
+[deps]
+Metaheuristics = "bcdb8e00-2c21-11e9-3065-2b553b22f898"
+TyAPI = "47291b8a-bbb9-4491-9db9-c1b01f408cdb"
+TyBase = "ba16d4c4-18a5-4e01-8d4b-5500359c5e02"
+PyCall = "438e738f-606a-5dbb-bf0a-cddfbfd45ab0"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+TyMath = "f3e03b70-54fa-45d2-b127-9119d2067c27"
+
+

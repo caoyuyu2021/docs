@@ -1,0 +1,3 @@
+C:/Users/Administrator/Desktop/ROMBuilder/Windows/CPU/Minfer/out/CMakeFiles/main.dir
+C:/Users/Administrator/Desktop/ROMBuilder/Windows/CPU/Minfer/out/CMakeFiles/edit_cache.dir
+C:/Users/Administrator/Desktop/ROMBuilder/Windows/CPU/Minfer/out/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <version>1.0</version>
+    <name>ServoWing</name>
+    <description>伺服翼模型库</description>
+    <dependencies>
+    </dependencies>
+</project>
