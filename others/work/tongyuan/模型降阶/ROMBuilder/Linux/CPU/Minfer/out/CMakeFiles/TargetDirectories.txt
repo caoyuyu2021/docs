@@ -1,3 +1,0 @@
-/home/tongyuan/桌面/Linux/CPU/Minfer/out/CMakeFiles/rebuild_cache.dir
-/home/tongyuan/桌面/Linux/CPU/Minfer/out/CMakeFiles/edit_cache.dir
-/home/tongyuan/桌面/Linux/CPU/Minfer/out/CMakeFiles/main.dir
