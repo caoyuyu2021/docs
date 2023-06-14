@@ -1,0 +1,11 @@
+﻿within SystemModelerExtras.Normalization.min_max_trans;
+partial model Icons "Icon for packages containing functions"
+
+  annotation (Icon(coordinateSystem(preserveAspectRatio = false, extent = {{-100, 
+    -100}, {100, 100}}), graphics = {
+    Text(
+    textColor = {128, 128, 128}, 
+    extent = {{-90, -90}, {90, 90}}, 
+    textString = "Min_Max_Trans")}));
+  extends Modelica.Icons.Package;
+end Icons;
