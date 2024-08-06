@@ -1,0 +1,77 @@
+root: index
+subtrees:
+- numbered: 2
+  entries:
+  - file: ch-parallel-computing/index
+    entries:
+    - file: ch-parallel-computing/computer-architecture
+    - file: ch-parallel-computing/serial-parallel
+    - file: ch-parallel-computing/thread-process
+    - file: ch-parallel-computing/parallel-program-design
+    - file: ch-parallel-computing/performance-metrics
+  - file: ch-data-science/index
+    entries:
+    - file: ch-data-science/data-science-lifecycle
+    - file: ch-data-science/machine-learning
+    - file: ch-data-science/deep-learning
+    - file: ch-data-science/hyperparameter
+    - file: ch-data-science/python-ecosystem
+  - file: ch-dask/index
+    entries:
+    - file: ch-dask/dask-intro
+    - file: ch-dask/dask-dataframe-intro
+    - file: ch-dask/dask-distributed
+    - file: ch-dask/gpu
+    - file: ch-dask/task-graph-partitioning
+  - file: ch-dask-dataframe/index
+    entries:
+    - file: ch-dask-dataframe/read-write
+    - file: ch-dask-dataframe/indexing
+    - file: ch-dask-dataframe/map-partitions
+    - file: ch-dask-dataframe/shuffle
+    - file: ch-dask-dataframe/dask-case-study
+  - file: ch-dask-ml/index
+    entries:
+    - file: ch-dask-ml/preprocessing
+    - file: ch-dask-ml/hyperparameter
+    - file: ch-dask-ml/distributed-training
+  - file: ch-ray-core/index
+    entries:
+      - file: ch-ray-core/ray-intro
+      - file: ch-ray-core/remote-function
+      - file: ch-ray-core/remote-object
+      - file: ch-ray-core/remote-class
+  - file: ch-ray-cluster/index
+    entries:
+      - file: ch-ray-cluster/ray-cluster
+      - file: ch-ray-cluster/ray-resource
+      - file: ch-ray-cluster/ray-job
+  - file: ch-ray-data/index
+    entries:
+    - file: ch-ray-data/ray-data-intro
+    - file: ch-ray-data/data-load-inspect-save
+    - file: ch-ray-data/data-transform
+    - file: ch-ray-data/preprocessor
+    - file: ch-ray-data/modin
+  - file: ch-ray-ml/index
+    entries:
+    - file: ch-ray-ml/ray-train
+    - file: ch-ray-ml/ray-tune
+    - file: ch-ray-ml/ray-serve
+  - file: ch-xorbits/index
+    entries:
+    - file: ch-xorbits/xorbits
+    - file: ch-xorbits/xinference
+  - file: ch-mpi/index
+    entries:
+    - file: ch-mpi/mpi-intro
+    - file: ch-mpi/mpi-hello-world
+    - file: ch-mpi/point-to-point
+    - file: ch-mpi/collective
+    - file: ch-mpi/remote-memory-access
+  - file: ch-mpi-large-model/index
+    entries:
+    - file: ch-mpi-large-model/nccl
+    - file: ch-mpi-large-model/data-parallel
+    - file: ch-mpi-large-model/pipeline-parallel
+  - file: ref
